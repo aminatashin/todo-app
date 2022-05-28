@@ -15,6 +15,7 @@ function Todo({ todos, compeleteTodo, removeTodo, updateTodo }) {
       value: "",
     });
   };
+
   if (edit.id) {
     return <TodoForm edit={edit} onSubmit={submitUpdate} />;
   }

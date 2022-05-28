@@ -6,8 +6,23 @@ function TodoForm(props) {
   const inputRef = useRef(null);
   useEffect(() => {
     inputRef.current.focus();
+    fetchPost();
   });
+  // ============fetch POST============================
+  const endpoint = "https://todoappm8.herokuapp.com/";
 
+  const body = JSON.stringify(input);
+  const fetchPost = async () => {
+    await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: body,
+    });
+  };
+  //  ================================================================
   const handleChange = (e) => {
     setInput(e.target.value);
   };

@@ -9,7 +9,15 @@ function TodoList() {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
-
+    //  ========fetch Get================
+    const fetchGet = async () => {
+      const res = await fetch("https://todoappm8.herokuapp.com/");
+      if (res.ok) {
+        const data = await res.json();
+        setTodos(data);
+      }
+    };
+    // ==================================
     const newTodos = [todo, ...todos];
     setTodos(newTodos);
   };
