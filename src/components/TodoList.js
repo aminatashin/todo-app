@@ -11,7 +11,7 @@ function TodoList() {
     }
     //  ========fetch Get================
     const fetchGet = async () => {
-      const res = await fetch("https://todoappm8.herokuapp.com/");
+      const res = await fetch("https://localhost:3001/user");
       if (res.ok) {
         const data = await res.json();
         setTodos(data);

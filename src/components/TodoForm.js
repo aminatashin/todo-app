@@ -6,7 +6,6 @@ function TodoForm(props) {
   const inputRef = useRef(null);
   useEffect(() => {
     inputRef.current.focus();
-    fetchPost();
   });
   // ============fetch POST============================
   const endpoint = "https://todoappm8.herokuapp.com/";
@@ -34,6 +33,7 @@ function TodoForm(props) {
       id: Math.floor(Math.random() * 10000),
       text: input,
     });
+    fetchPost();
     setInput("");
   };
 
