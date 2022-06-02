@@ -8,7 +8,7 @@ function TodoForm(props) {
     inputRef.current.focus();
   });
   // ============fetch POST============================
-  const endpoint = "https://todoappm8.herokuapp.com/";
+  const endpoint = "https://localhost:3004/user";
 
   const body = JSON.stringify(input);
   const fetchPost = async () => {

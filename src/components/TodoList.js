@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
-function TodoList() {
+const TodoList = () => {
   const [todos, setTodos] = useState([]);
-
+  useEffect(() => {
+    fetchGet();
+  }, []);
+  //  ========fetch Get================
+  const fetchGet = async () => {
+    const res = await fetch("https://localhost:3004/user");
+    if (res.ok) {
+      const data = await res.json();
+      setTodos(data);
+    }
+  };
+  // ==================================
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
-    //  ========fetch Get================
-    const fetchGet = async () => {
-      const res = await fetch("https://localhost:3001/user");
-      if (res.ok) {
-        const data = await res.json();
-        setTodos(data);
-      }
-    };
-    // ==================================
+
     const newTodos = [todo, ...todos];
     setTodos(newTodos);
   };
@@ -58,6 +61,6 @@ function TodoList() {
       />
     </div>
   );
-}
+};
 
 export default TodoList;
